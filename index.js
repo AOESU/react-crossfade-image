@@ -37,16 +37,17 @@ export default class CrossfadeImage extends Component {
     const { duration, timingFunction, delay, style, alt } = this.props;
     const { topSrc, bottomOpacity, bottomSrc } = this.state;
     return (
-      <div style={{ ...{ position: "relative" } }}>
+      <div style={{ ...defaultStyle, ...{ position: "relative" } }}>
         {topSrc &&
           <img
-            style={{ ...style, ...{ position: "absolute" } }}
+            style={{ ...defaultStyle, ...style, ...{ position: "absolute" } }}
             src={topSrc}
             alt={alt}
           />}
         {bottomSrc &&
           <img
             style={{
+              ...defaultStyle,
               ...style,
               ...{
                 opacity: bottomOpacity,
@@ -60,6 +61,7 @@ export default class CrossfadeImage extends Component {
   }
 }
 
+const defaultStyle = {};
 
 CrossfadeImage.propTypes = {
   src: PropTypes.string.isRequired,
